@@ -176,55 +176,54 @@
 
   <form class="rsvp-form" id="rsvpForm">
     <div class="form-row">
-      <label for="guestName">Full Name(s)</label>
-      <input type="text" id="guestName" name="guestName" required placeholder="e.g. Rahul &amp; Simran Mehta">
+      <label for="guestName">Name</label>
+      <input type="text" id="guestName" name="guestName" required placeholder="Your full name">
     </div>
     <div class="form-row">
-      <label for="guestEmail">Email</label>
-      <input type="email" id="guestEmail" name="guestEmail" required placeholder="you@example.com">
+      <label for="guestPhone">Phone Number</label>
+      <input type="tel" id="guestPhone" name="guestPhone" required placeholder="+91 XXXXX XXXXX">
     </div>
     <div class="form-row">
-      <label for="guestPhone">Phone</label>
-      <input type="tel" id="guestPhone" name="guestPhone" placeholder="+91 XXXXX XXXXX">
+      <label for="guestEmail">Email Address (optional)</label>
+      <input type="email" id="guestEmail" name="guestEmail" placeholder="you@example.com">
     </div>
     <div class="form-row">
-      <label for="attending">Will you be joining us?</label>
-      <select id="attending" name="attending" required>
-        <option value="">Please select</option>
-        <option value="yes">Joyfully accept</option>
-        <option value="no">Regretfully decline</option>
-      </select>
+      <label for="guestCount">How Many People Are Coming?</label>
+      <input type="number" id="guestCount" name="guestCount" min="1" max="20" value="1" required>
     </div>
     <div class="form-row">
-      <label for="guestCount">Number of Guests (including you)</label>
-      <input type="number" id="guestCount" name="guestCount" min="1" max="10" value="1">
-    </div>
-    <div class="form-row">
-      <label for="events">Which events will you attend?</label>
+      <label>Are You Coming From Kolkata or Outside Kolkata?</label>
       <div class="checkbox-group">
-        <label><input type="checkbox" name="events" value="Ring Ceremony"> Ring Ceremony</label>
-        <label><input type="checkbox" name="events" value="Mehendi"> Mehendi</label>
-        <label><input type="checkbox" name="events" value="Haldi"> Haldi</label>
-        <label><input type="checkbox" name="events" value="Sangeet"> Sangeet</label>
-        <label><input type="checkbox" name="events" value="Wedding"> Wedding Ceremony</label>
-        <label><input type="checkbox" name="events" value="Reception"> Reception</label>
+        <label><input type="radio" name="origin" value="Kolkata" required> Kolkata</label>
+        <label><input type="radio" name="origin" value="Outside Kolkata" required> Outside Kolkata</label>
       </div>
     </div>
-    <div class="form-row">
-      <label for="mealPref">Meal Preference</label>
-      <select id="mealPref" name="mealPref">
-        <option value="veg">Vegetarian</option>
-        <option value="non-veg">Non-Vegetarian</option>
-        <option value="jain">Jain</option>
-        <option value="vegan">Vegan</option>
-      </select>
+
+    <div class="travel-details" id="travelDetails" hidden>
+      <div class="form-row">
+        <label>By Which Transport Are You Coming?</label>
+        <div class="checkbox-group">
+          <label><input type="radio" name="transport" value="Flight"> Flight</label>
+          <label><input type="radio" name="transport" value="Train"> Train</label>
+        </div>
+      </div>
+      <div class="form-row">
+        <label for="ticketDetails">Ticket Details</label>
+        <input type="text" id="ticketDetails" name="ticketDetails" placeholder="e.g. Flight AI-203, arriving 30 Aug, 4:00 PM">
+      </div>
+      <div class="form-row">
+        <label for="idNumber">Identity Proof Number</label>
+        <input type="text" id="idNumber" name="idNumber" placeholder="e.g. Aadhaar, Driving License, Passport number">
+      </div>
+      <div class="form-row">
+        <label for="idPhoto">Photograph of ID Proof</label>
+        <input type="file" id="idPhoto" name="idPhoto" accept="image/*">
+        <p class="form-note">This form can't attach files automatically — please attach this photo yourself in the email window that opens before sending.</p>
+      </div>
     </div>
-    <div class="form-row">
-      <label for="message">Message for the Couple (optional)</label>
-      <textarea id="message" name="message" rows="3" placeholder="Your wishes..."></textarea>
-    </div>
+
     <button type="submit" class="btn btn-primary">Send Details</button>
-    <p class="form-note" id="formNote">This form currently opens your email app to send the RSVP. See README to connect it to a form service or email inbox directly.</p>
+    <p class="form-note" id="formNote">This form currently opens your email app to send your details. See README to connect it to a form service or email inbox directly.</p>
   </form>
 </section>
 

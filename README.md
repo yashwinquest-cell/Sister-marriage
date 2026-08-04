@@ -22,18 +22,22 @@ Everything guest-facing is placeholder text in `index.html`, marked like `[Venue
 - **Gallery** — replace `.gallery-item.placeholder` divs with `<img src="assets/img/your-photo.jpg" alt="...">`. Add photos to `assets/img/`.
 - **Contact** — names, phone, email
 
-## RSVP form
+## Guest Details form
 
-Right now the RSVP form (in `#rsvp`) opens the guest's email app with a pre-filled message (no backend needed). To make it work, replace `REPLACE_WITH_YOUR_EMAIL@example.com` in `assets/js/script.js` with your real email address.
+The form (in `#rsvp`) collects: name, phone (required), email (optional), guest count, and whether they're coming from Kolkata or outside. If "Outside Kolkata" is selected, it reveals extra fields for transport mode, ticket details, ID proof number, and an ID proof photo upload.
 
-If you'd rather have responses land directly in your inbox without relying on the guest's email client, you have two easy no-cost options:
+Right now it opens the guest's email app with a pre-filled message (no backend needed). To make it work, replace `REPLACE_WITH_YOUR_EMAIL@example.com` in `assets/js/script.js` with your real email address.
 
-1. **Formspree** (recommended, free tier): sign up at formspree.io, get a form endpoint, then change the `<form>` tag in `index.html` to:
+**Note on the ID photo field:** a plain `mailto:` link can't attach files programmatically (browser security restriction), so the form asks guests to manually attach the photo themselves in the email window that opens. This works but is easy to forget.
+
+**Note on sensitive ID data:** guests will be entering Aadhaar/driving license numbers and photos of ID proof. A `mailto:` link puts that data into a URL your guest's browser/email client handles — it isn't encrypted in transit the way a proper form submission is, and some browsers keep URLs in history. For real usage (not just a placeholder), strongly consider switching to a proper form backend before collecting this at scale:
+
+1. **Formspree** (recommended, free tier, supports file uploads on paid plans): sign up at formspree.io, get a form endpoint, then change the `<form>` tag in `index.html` to:
    ```html
-   <form class="rsvp-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+   <form class="rsvp-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" enctype="multipart/form-data">
    ```
    and remove the JS submit handler in `script.js` (or leave it — Formspree works with a plain HTML POST).
-2. **Google Form**: create a Google Form with the same fields and either link to it from the RSVP button, or embed it with an `<iframe>`.
+2. **Google Form**: create a Google Form with the same fields (Google Forms supports file upload fields that save to your Drive) and either link to it from the button, or embed it with an `<iframe>`. This is the simplest way to properly handle the ID photo upload.
 
 ## Guest list
 

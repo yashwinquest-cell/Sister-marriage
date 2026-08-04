@@ -528,6 +528,13 @@ img { max-width: 100%; display: block; }
 
 .form-row { margin-bottom: 1.25rem; }
 
+.travel-details {
+  margin: 0 0 1.25rem;
+  padding: 1.25rem 1.25rem 0.25rem;
+  border-left: 2px solid var(--rose-gold);
+  background: var(--ivory);
+}
+
 .form-row label {
   display: block;
   font-size: 0.8rem;
