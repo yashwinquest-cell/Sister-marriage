@@ -16,7 +16,7 @@ guests-template.csv      Template for your own guest-list tracking (not shown on
 Everything guest-facing is placeholder text in `index.html`, marked like `[Venue Name]` or `[Date]`. Replace:
 
 - **Names & date** — `<title>`, hero section, footer
-- **Countdown** — set the real date/time in `data-wedding-date` on the `#countdown` div (ISO format, e.g. `2026-12-12T10:00:00`)
+- **Countdown** — edit the `upcomingEvents` array at the top of `assets/js/script.js`. It automatically counts down to whichever event is soonest and switches to the next one once the current one passes (e.g. it'll move from Ring Ceremony to Mehendi once 31 Aug passes). Add one `{ name: '...', date: 'YYYY-MM-DDTHH:MM:SS' }` entry per event as dates get confirmed.
 - **Schedule** — one `.timeline-item` per event (Mehendi, Haldi, Sangeet, Wedding, Reception)
 - **Venue & Travel** — address, Google Maps link, airport/station distances, hotel recommendations
 - **Gallery** — replace `.gallery-item.placeholder` divs with `<img src="assets/img/your-photo.jpg" alt="...">`. Add photos to `assets/img/`.

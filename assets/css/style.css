@@ -123,6 +123,14 @@ img { max-width: 100%; display: block; }
   letter-spacing: 0.05em;
 }
 
+.countdown-label {
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.8rem;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
 .countdown {
   display: flex;
   justify-content: center;

@@ -8,21 +8,39 @@ if (navToggle) {
   );
 }
 
-// Countdown timer
+// Countdown timer — automatically targets whichever event is coming up next.
+// Add more entries here as dates for Mehendi, Haldi, Sangeet, Wedding and
+// Reception get confirmed; the countdown switches to the next one once the
+// current one passes.
+const upcomingEvents = [
+  { name: 'Ring Ceremony', date: '2026-08-31T10:00:00' }
+];
+
 const countdownEl = document.getElementById('countdown');
+const countdownLabelEl = document.getElementById('countdownLabel');
 if (countdownEl) {
-  const weddingDate = new Date(countdownEl.dataset.weddingDate).getTime();
   const daysEl = document.getElementById('cd-days');
   const hoursEl = document.getElementById('cd-hours');
   const minsEl = document.getElementById('cd-mins');
   const secsEl = document.getElementById('cd-secs');
 
+  function getNextEvent() {
+    const now = Date.now();
+    return upcomingEvents
+      .map(e => ({ ...e, time: new Date(e.date).getTime() }))
+      .filter(e => !isNaN(e.time) && e.time > now)
+      .sort((a, b) => a.time - b.time)[0];
+  }
+
   function updateCountdown() {
-    const distance = weddingDate - Date.now();
-    if (isNaN(weddingDate) || distance <= 0) {
+    const next = getNextEvent();
+    if (!next) {
       countdownEl.style.display = 'none';
+      if (countdownLabelEl) countdownLabelEl.style.display = 'none';
       return;
     }
+    if (countdownLabelEl) countdownLabelEl.textContent = `Counting down to ${next.name}`;
+    const distance = next.time - Date.now();
     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
     const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
     const mins = Math.floor((distance / (1000 * 60)) % 60);
