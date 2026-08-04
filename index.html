@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Priya &amp; Arjun — Wedding</title>
+<title>Pearl &amp; Aayush — Wedding</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
 <header class="site-header" id="top">
   <nav class="navbar">
-    <a href="#top" class="brand">P &amp; A</a>
+    <a href="#top" class="brand">Pearl &amp; Aayush Wedding</a>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">&#9776;</button>
     <ul class="nav-links" id="navLinks">
       <li><a href="#home">Home</a></li>
@@ -27,24 +27,50 @@
 
 <section class="hero" id="home">
   <div class="hero-content">
+    <div class="hero-portrait-frame">
+      <img src="assets/img/couple-portrait.jpg" alt="Pearl and Aayush" class="hero-portrait">
+      <div class="ring-duo" aria-hidden="true">
+        <span class="ring ring-left"></span>
+        <span class="ring ring-right"></span>
+      </div>
+    </div>
     <p class="eyebrow">Together with their families</p>
-    <h1 class="hero-names">Priya <span class="amp">&amp;</span> Arjun</h1>
+    <h1 class="hero-names">Pearl <span class="amp">&amp;</span> Aayush</h1>
     <p class="hero-date">[Wedding Date] &bull; [City, Country]</p>
-    <div class="countdown" id="countdown" data-wedding-date="2026-12-12T10:00:00">
+    <div class="ornament" aria-hidden="true"></div>
+    <p class="countdown-label" id="countdownLabel">Counting down to...</p>
+    <div class="countdown" id="countdown">
       <div class="countdown-item"><span id="cd-days">--</span><small>Days</small></div>
       <div class="countdown-item"><span id="cd-hours">--</span><small>Hours</small></div>
       <div class="countdown-item"><span id="cd-mins">--</span><small>Mins</small></div>
       <div class="countdown-item"><span id="cd-secs">--</span><small>Secs</small></div>
     </div>
     <a href="#rsvp" class="btn btn-primary">RSVP Now</a>
+    <div class="scroll-cue" aria-hidden="true">
+      <span></span>
+      <small>Scroll to explore</small>
+    </div>
   </div>
 </section>
 
 <section class="section" id="schedule">
   <h2 class="section-title">Wedding Schedule</h2>
+  <div class="ornament" aria-hidden="true"></div>
   <p class="section-subtitle">We can't wait to celebrate with you. Here's what's planned.</p>
 
   <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-date">
+        <span class="day">Mon</span>
+        <span class="date">31 Aug</span>
+      </div>
+      <div class="timeline-body">
+        <h3>Ring Ceremony</h3>
+        <p class="timeline-time">6:00 PM &mdash; Vivah Banquet</p>
+        <p>The formal engagement, exchanging rings with close family and friends.</p>
+      </div>
+    </div>
+
     <div class="timeline-item">
       <div class="timeline-date">
         <span class="day">Fri</span>
@@ -109,11 +135,12 @@
 
 <section class="section alt" id="venue">
   <h2 class="section-title">Venue &amp; Travel</h2>
+  <div class="ornament" aria-hidden="true"></div>
   <div class="venue-grid">
     <div class="card">
-      <h3>Venue</h3>
-      <p><strong>[Venue Name]</strong><br>[Full Address]</p>
-      <a class="btn btn-outline" href="[Google Maps Link]" target="_blank" rel="noopener">Get Directions</a>
+      <h3>Ring Ceremony Venue</h3>
+      <p><strong>Vivah Banquet</strong><br>403/1 Dakhindari Road, Alcove Gloria, 1st Floor, VIP Road, Service Lane (between Ultadanga &amp; Lake Town), Kolkata, West Bengal 700048</p>
+      <a class="btn btn-outline" href="https://maps.app.goo.gl/XPMcpCCCQziofGp8A?g_st=aw" target="_blank" rel="noopener">Get Directions</a>
     </div>
     <div class="card">
       <h3>Getting There</h3>
@@ -130,6 +157,7 @@
 
 <section class="section" id="gallery">
   <h2 class="section-title">Gallery</h2>
+  <div class="ornament" aria-hidden="true"></div>
   <p class="section-subtitle">A few of our favourite moments &mdash; more to come after the wedding!</p>
   <div class="gallery-grid">
     <div class="gallery-item placeholder">Add Photo</div>
@@ -143,6 +171,7 @@
 
 <section class="section alt" id="rsvp">
   <h2 class="section-title">RSVP</h2>
+  <div class="ornament" aria-hidden="true"></div>
   <p class="section-subtitle">Kindly respond by [RSVP Deadline]. We can't wait to celebrate with you!</p>
 
   <form class="rsvp-form" id="rsvpForm">
@@ -173,6 +202,7 @@
     <div class="form-row">
       <label for="events">Which events will you attend?</label>
       <div class="checkbox-group">
+        <label><input type="checkbox" name="events" value="Ring Ceremony"> Ring Ceremony</label>
         <label><input type="checkbox" name="events" value="Mehendi"> Mehendi</label>
         <label><input type="checkbox" name="events" value="Haldi"> Haldi</label>
         <label><input type="checkbox" name="events" value="Sangeet"> Sangeet</label>
@@ -200,6 +230,7 @@
 
 <section class="section" id="contact">
   <h2 class="section-title">Questions?</h2>
+  <div class="ornament" aria-hidden="true"></div>
   <p class="section-subtitle">Reach out to us anytime.</p>
   <div class="contact-grid">
     <div class="card">
@@ -214,7 +245,7 @@
 </section>
 
 <footer class="site-footer">
-  <p>With love, Priya &amp; Arjun &bull; [Wedding Date]</p>
+  <p>With love, Pearl &amp; Aayush &bull; [Wedding Date]</p>
 </footer>
 
 <script src="assets/js/script.js"></script>
