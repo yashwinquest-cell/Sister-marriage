@@ -72,27 +72,44 @@ if (countdownEl) {
   setInterval(updateCountdown, 1000);
 }
 
-// RSVP form: opens a pre-filled email as a zero-backend fallback.
+// Show transport/ticket/ID fields only for guests coming from outside Kolkata.
+const travelDetails = document.getElementById('travelDetails');
+if (travelDetails) {
+  document.querySelectorAll('input[name="origin"]').forEach(radio => {
+    radio.addEventListener('change', () => {
+      const checked = document.querySelector('input[name="origin"]:checked');
+      travelDetails.hidden = !checked || checked.value !== 'Outside Kolkata';
+    });
+  });
+}
+
+// Guest details form: opens a pre-filled email as a zero-backend fallback.
 // See README to swap this for Formspree or another form service.
 const rsvpForm = document.getElementById('rsvpForm');
 if (rsvpForm) {
   rsvpForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const data = new FormData(rsvpForm);
-    const events = data.getAll('events').join(', ') || 'None selected';
+    const isOutside = data.get('origin') === 'Outside Kolkata';
 
     const lines = [
       `Name: ${data.get('guestName')}`,
-      `Email: ${data.get('guestEmail')}`,
-      `Phone: ${data.get('guestPhone') || '-'}`,
-      `Attending: ${data.get('attending') === 'yes' ? 'Yes' : 'No'}`,
+      `Phone: ${data.get('guestPhone')}`,
+      `Email: ${data.get('guestEmail') || '-'}`,
       `Number of Guests: ${data.get('guestCount')}`,
-      `Events: ${events}`,
-      `Meal Preference: ${data.get('mealPref')}`,
-      `Message: ${data.get('message') || '-'}`
+      `Coming From: ${data.get('origin') || '-'}`
     ];
 
-    const subject = encodeURIComponent(`RSVP from ${data.get('guestName')}`);
+    if (isOutside) {
+      lines.push(
+        `Transport: ${data.get('transport') || '-'}`,
+        `Ticket Details: ${data.get('ticketDetails') || '-'}`,
+        `ID Proof Number: ${data.get('idNumber') || '-'}`,
+        'ID Proof Photo: (please attach manually — see note on the form)'
+      );
+    }
+
+    const subject = encodeURIComponent(`Guest details from ${data.get('guestName')}`);
     const body = encodeURIComponent(lines.join('\n'));
     // Replace with the couple's actual contact email.
     const rsvpEmail = 'REPLACE_WITH_YOUR_EMAIL@example.com';
