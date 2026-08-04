@@ -13,7 +13,7 @@ if (navToggle) {
 // Reception get confirmed; the countdown switches to the next one once the
 // current one passes.
 const upcomingEvents = [
-  { name: 'Ring Ceremony', date: '2026-08-31T10:00:00' }
+  { name: 'Ring Ceremony', date: '2026-08-31T18:00:00' }
 ];
 
 const countdownEl = document.getElementById('countdown');
