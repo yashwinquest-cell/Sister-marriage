@@ -8,6 +8,24 @@ if (navToggle) {
   );
 }
 
+// Scroll reveal: sections fade up into view as you scroll down to them.
+// Classes are added only when JS runs, so content stays visible if it doesn't.
+if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+  const revealEls = document.querySelectorAll('.section');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => {
+    el.classList.add('pre-reveal');
+    revealObserver.observe(el);
+  });
+}
+
 // Countdown timer — automatically targets whichever event is coming up next.
 // Add more entries here as dates for Mehendi, Haldi, Sangeet, Wedding and
 // Reception get confirmed; the countdown switches to the next one once the
