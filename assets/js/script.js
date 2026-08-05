@@ -90,6 +90,10 @@ if (rsvpForm) {
   rsvpForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const data = new FormData(rsvpForm);
+
+    // Honeypot: real guests never fill this hidden field; bots often do.
+    if (data.get('_gotcha')) return;
+
     const isOutside = data.get('origin') === 'Outside Kolkata';
 
     const lines = [

@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; script-src 'self'; connect-src 'self'; frame-src https://docs.google.com; form-action 'self' mailto: https://formspree.io https://docs.google.com; base-uri 'self'; object-src 'none';">
 <title>Pearl &amp; Aayush — Wedding</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -175,6 +177,10 @@
   <p class="section-subtitle">Kindly respond by [RSVP Deadline]. We can't wait to celebrate with you!</p>
 
   <form class="rsvp-form" id="rsvpForm">
+    <div class="honeypot-field" aria-hidden="true">
+      <label for="_gotcha">Leave this field blank</label>
+      <input type="text" id="_gotcha" name="_gotcha" tabindex="-1" autocomplete="off">
+    </div>
     <div class="form-row">
       <label for="guestName">Name</label>
       <input type="text" id="guestName" name="guestName" required placeholder="Your full name">

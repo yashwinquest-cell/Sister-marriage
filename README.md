@@ -39,6 +39,14 @@ Right now it opens the guest's email app with a pre-filled message (no backend n
    and remove the JS submit handler in `script.js` (or leave it — Formspree works with a plain HTML POST).
 2. **Google Form**: create a Google Form with the same fields (Google Forms supports file upload fields that save to your Drive) and either link to it from the button, or embed it with an `<iframe>`. This is the simplest way to properly handle the ID photo upload.
 
+## Security
+
+- **`noindex` meta tag** (`index.html`) keeps the site out of Google/search results, so it's only reachable by people you send the link to.
+- **Content-Security-Policy meta tag** (`index.html`) restricts which scripts/styles/fonts the page can load, reducing damage if a dependency were ever compromised. If you add a new external resource (a font, an embedded form, an image CDN), you'll need to add its domain to the relevant CSP directive or it'll be silently blocked.
+- **Honeypot field** (`_gotcha` in the Guest Details form) is a hidden field real guests never fill in; if it's non-empty on submit, the form silently ignores it. This mainly matters once you switch to Formspree or another public form endpoint — Formspree recognizes `_gotcha` natively.
+- **Never commit real guest data to this repo.** It's likely a public GitHub repo, and git history is permanent — keep `guests-template.csv` as a local tool only, and don't paste real Aadhaar numbers, phone numbers, or ID photos into any file that gets pushed.
+- **Lock down sharing** on whatever inbox/Drive folder/spreadsheet ultimately receives guest submissions — set it to private, not "anyone with the link."
+
 ## Guest list
 
 `guests-template.csv` is a starting template for tracking your own guest list (names, contacts, party size, RSVP status) — open it in Excel/Google Sheets. It's for your own bookkeeping and isn't published on the site (keeps guest contact details private). Send me your real guest list whenever it's ready and I can help load it in or wire up guest-specific features (e.g. RSVP lookup by name).
